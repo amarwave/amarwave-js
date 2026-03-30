@@ -51,13 +51,6 @@ ch.publish('message', { user: 'Ali', text: 'Hello!' });
 |---|---|---|---|
 | `appKey` | string | `""` | Your app key **(required)** |
 | `appSecret` | string | `""` | App secret for client-side HMAC auth (dev only) |
-| `wsHost` | string | `"localhost"` | WebSocket server hostname |
-| `wsPort` | number | `3001` | WebSocket plain-text port |
-| `wssPort` | number | `443` | WebSocket TLS port |
-| `apiHost` | string | *(wsHost)* | HTTP API hostname |
-| `apiPort` | number | `8000` | HTTP API port |
-| `apiPath` | string | `"/api/v1/trigger"` | HTTP trigger endpoint path |
-| `wsPath` | string | `"/ws"` | WebSocket upgrade path |
 | `forceTLS` | boolean | `false` | Force WSS + HTTPS |
 | `cluster` | string | `"default"` | Named cluster (`"ap1"`, `"ap2"`, `"eu"`, `"us"`) or hostname |
 | `authEndpoint` | string | `"/broadcasting/auth"` | Server auth URL for private/presence channels |
