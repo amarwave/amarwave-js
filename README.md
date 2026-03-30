@@ -9,7 +9,7 @@ Zero external dependencies. Full TypeScript types. Supports public, private, and
 ## Installation
 
 ```bash
-npm install amarwave
+npm install amarwave-js
 ```
 
 Or via CDN:
