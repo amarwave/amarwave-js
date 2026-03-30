@@ -15,7 +15,7 @@ npm install amarwave-js
 Or via CDN:
 
 ```html
-<script src="https://cdn.amarwave.io/amarwave.min.js"></script>
+<script src="https://amarwave.com/cdn/amarwave.min.js"></script>
 ```
 
 ---
@@ -23,14 +23,15 @@ Or via CDN:
 ## Quick Start
 
 ```ts
-import { AmarWave } from 'amarwave';
+import AmarWave from 'amarwave-js';
 
 const aw = new AmarWave({
   appKey:    'your-app-key',
-  appSecret: 'your-app-secret',   // dev only — use server auth in production
-  wsHost:    'localhost',
-  wsPort:    3001,
-  apiPort:   8000,
+  appSecret: 'your-app-secret',
+});
+
+aw.connection.bind('connected', () => {
+  console.log('Connected to AmarWave!');
 });
 
 const ch = aw.subscribe('public-chat');
