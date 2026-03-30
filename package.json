@@ -1,0 +1,42 @@
+{
+  "name": "amarwave",
+  "version": "2.0.0",
+  "description": "Real-time WebSocket client for AmarWave servers",
+  "main": "dist/amarwave.cjs.js",
+  "module": "dist/amarwave.esm.js",
+  "browser": "dist/amarwave.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run build:ts && npm run build:bundle && npm run build:min",
+    "build:ts": "tsc --project tsconfig.build.json",
+    "build:bundle": "rollup -c rollup.config.js",
+    "build:min": "terser dist/amarwave.umd.js -o dist/amarwave.min.js --compress --mangle --source-map",
+    "dev": "tsc --watch",
+    "lint": "tsc --noEmit",
+    "test": "echo 'No tests yet'"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "rollup": "^4.17.2",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup-plugin-dts": "^6.1.1",
+    "terser": "^5.31.1",
+    "tslib": "^2.6.3"
+  },
+  "keywords": [
+    "websocket",
+    "realtime",
+    "pubsub",
+    "amarwave"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amarwave/amarwave-js.git"
+  },
+  "type": "module"
+}
