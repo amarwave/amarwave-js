@@ -33,4 +33,9 @@ export class Connection extends EventEmitter {
     this._state = state;
     this._emit(state, data);
   }
+
+  /** @internal Forward an error to connection-level listeners. */
+  _fireError(err: Error): void {
+    this._emit('error', err);
+  }
 }

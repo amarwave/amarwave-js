@@ -17,4 +17,6 @@ export declare class Connection extends EventEmitter {
     get socket_id(): string | null;
     /** @internal Fire a state event on this proxy. */
     _fireState(state: ConnectionState, data?: unknown): void;
+    /** @internal Forward an error to connection-level listeners. */
+    _fireError(err: Error): void;
 }

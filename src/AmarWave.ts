@@ -336,6 +336,7 @@ export class AmarWave extends EventEmitter {
 
   private _onError(err: Error): void {
     this._emit('error', err);
+    this.connection._fireError(err);
     this.connection._fireState(this.state);
   }
 

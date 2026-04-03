@@ -4,6 +4,10 @@
  * (c) 2024 AmarWave — MIT License
  * https://amarwave.io
  */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 /**
  * Minimal typed event emitter.
  * Used as the base class for both AmarWave and Channel.
@@ -656,5 +660,10 @@ class AmarWave extends EventEmitter {
     }
 }
 
-export { AmarWave, CLUSTERS, Channel, Connection, EventEmitter, AmarWave as default };
-//# sourceMappingURL=amarwave.esm.js.map
+exports.AmarWave = AmarWave;
+exports.CLUSTERS = CLUSTERS;
+exports.Channel = Channel;
+exports.Connection = Connection;
+exports.EventEmitter = EventEmitter;
+exports.default = AmarWave;
+//# sourceMappingURL=amarwave.cjs.map

@@ -1,12 +1,20 @@
 {
   "name": "amarwave-js",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Real-time WebSocket client for AmarWave — subscribe to channels, bind events, publish messages.",
   "author": "AmarWave <mehedinaeem66@email.com>",
-  "main": "dist/amarwave.cjs.js",
+  "main": "dist/amarwave.cjs",
   "module": "dist/amarwave.esm.js",
   "browser": "dist/amarwave.umd.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/amarwave.esm.js",
+      "require": "./dist/amarwave.cjs",
+      "browser": "./dist/amarwave.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],

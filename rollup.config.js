@@ -50,7 +50,7 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      file:      'dist/amarwave.cjs.js',
+      file:      'dist/amarwave.cjs',
       format:    'cjs',
       banner,
       exports:   'named',

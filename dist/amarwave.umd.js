@@ -188,6 +188,10 @@
             this._state = state;
             this._emit(state, data);
         }
+        /** @internal Forward an error to connection-level listeners. */
+        _fireError(err) {
+            this._emit('error', err);
+        }
     }
 
     /**
@@ -538,6 +542,7 @@
         }
         _onError(err) {
             this._emit('error', err);
+            this.connection._fireError(err);
             this.connection._fireState(this.state);
         }
         _onClose() {
