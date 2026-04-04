@@ -1,9 +1,32 @@
 /*!
- * AmarWave JS Client v2.0.0
+ * AmarWave JS Client v2.0.5
  * Real-time WebSocket client for AmarWave servers
  * (c) 2024 AmarWave — MIT License
  * https://amarwave.io
  */
+if (typeof globalThis.WebSocket === 'undefined') {
+  try {
+    var _WS = require('ws');
+    if (!process.env.NODE_TLS_REJECT_UNAUTHORIZED) {
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    }
+    globalThis.WebSocket = /** @class */ (function (_Super) {
+      function _AW(u, p) {
+        return _Super.call(this, u, p, {
+          headers: {
+            Origin: 'https://amarwave.com',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          },
+          perMessageDeflate: false,
+        }) || this;
+      }
+      _AW.prototype = Object.create(_Super.prototype);
+      _AW.prototype.constructor = _AW;
+      return _AW;
+    }(_WS));
+  } catch (_) { /* ws not installed — Node.js 21+ has WebSocket built-in */ }
+}
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });

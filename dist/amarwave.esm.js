@@ -1,5 +1,5 @@
 /*!
- * AmarWave JS Client v2.0.0
+ * AmarWave JS Client v2.0.5
  * Real-time WebSocket client for AmarWave servers
  * (c) 2024 AmarWave — MIT License
  * https://amarwave.io

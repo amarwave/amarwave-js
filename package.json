@@ -1,6 +1,6 @@
 {
   "name": "amarwave-js",
-  "version": "2.0.4",
+  "version": "2.0.6",
   "description": "Real-time WebSocket client for AmarWave — subscribe to channels, bind events, publish messages.",
   "author": "AmarWave <mehedinaeem66@email.com>",
   "main": "dist/amarwave.cjs",
@@ -26,6 +26,9 @@
     "dev": "tsc --watch",
     "lint": "tsc --noEmit",
     "test": "echo 'No tests yet'"
+  },
+  "optionalDependencies": {
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
