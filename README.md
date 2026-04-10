@@ -522,8 +522,8 @@ aw.subscribe('presence-lobby');  // presence — needs appSecret or authEndpoint
 | `cluster` | `string` | `"default"` | `"default"` → amarwave.com · `"local"` → localhost |
 | `forceTLS` | `boolean` | `false` | Force `wss://` + `https://` |
 | `wsHost` | `string` | — | Override WS hostname (overrides cluster) |
-| `wsPort` | `number` | `3001` | WS plain-text port |
-| `wssPort` | `number` | `443` | WS TLS port |
+| `wsPort` | `number` | cluster value | WS plain-text port override (self-hosted) |
+| `wssPort` | `number` | cluster value | WS TLS port override (self-hosted) |
 | `apiHost` | `string` | — | API hostname for publishing (overrides cluster) |
 | `apiPort` | `number` | `8000` | API port |
 | `apiPath` | `string` | `"/api/v1/trigger"` | Trigger endpoint path |
