@@ -521,8 +521,6 @@ aw.subscribe('presence-lobby');  // presence — needs appSecret or authEndpoint
 | `appSecret` | `string` | — | App secret — for client-side HMAC auth |
 | `cluster` | `string` | `"default"` | `"default"` → amarwave.com |
 | `forceTLS` | `boolean` | `false` | Force `wss://` + `https://` |
-| `apiHost` | `string` | — | API hostname for publishing (overrides cluster) |
-| `apiPort` | `number` | `8000` | API port |
 | `apiPath` | `string` | `"/api/v1/trigger"` | Trigger endpoint path |
 | `wsPath` | `string` | `"/ws"` | WebSocket upgrade path |
 | `authEndpoint` | `string` | `"/broadcasting/auth"` | Server URL for private/presence auth |
