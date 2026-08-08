@@ -55,7 +55,8 @@ jobs:
           git config user.email "mehedinaeem66@gmail.com"
 
       - name: Bump patch version
-        run: npm version patch -m "chore: bump version to %s"
+        run: |
+          npm version patch -m "chore: bump version to %s"
 
       - name: Push version bump
         run: git push origin main
