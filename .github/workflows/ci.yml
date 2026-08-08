@@ -42,7 +42,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - run: npm install
-      - run: chmod +x node_modules/.bin/rollup || true
+      - run: find node_modules/.bin -type l -exec chmod +x {} \; || true
       - run: npm run build
       - run: npm publish --access public
         env:
