@@ -5,6 +5,7 @@ Official JavaScript / TypeScript client for **AmarWave** — real-time WebSocket
 Zero config · Full TypeScript support · Public, private & presence channels
 
 [![npm](https://img.shields.io/npm/v/amarwave-js)](https://www.npmjs.com/package/amarwave-js)
+[![CI](https://github.com/amarwave/amarwave-js/actions/workflows/ci.yml/badge.svg)](https://github.com/amarwave/amarwave-js/actions/workflows/ci.yml)
 [![license](https://img.shields.io/npm/l/amarwave-js)](LICENSE)
 
 ---
@@ -42,7 +43,7 @@ No build step. Drop into any HTML file and open directly in a browser.
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://unpkg.com/amarwave-js@2.0.6/dist/amarwave.min.js"></script>
+  <script src="https://unpkg.com/amarwave-js@2.0.7/dist/amarwave.min.js"></script>
 </head>
 <body>
 <script>
@@ -430,7 +431,7 @@ No install needed — import directly from npm.
 
 ```ts
 // app.ts
-import AmarWave from 'npm:amarwave-js@2.0.6';
+import AmarWave from 'npm:amarwave-js@2.0.7';
 
 const aw = new AmarWave({
   appKey:    'YOUR_APP_KEY',
@@ -528,6 +529,20 @@ aw.subscribe('presence-lobby');  // presence — needs appSecret or authEndpoint
 | `maxRetries` | `number` | `5` | Max reconnect attempts |
 | `reconnectDelay` | `number` | `1000` | Base delay ms (exponential backoff) |
 | `maxReconnectDelay` | `number` | `30000` | Max delay ms |
+
+---
+
+## CI / CD
+
+Releases are published automatically to npm when a `v*` tag is pushed to `main`.
+
+```bash
+# bump version, tag, push → CI builds and publishes
+npm version patch   # or minor / major
+git push origin main --tags
+```
+
+The publish job uses npm's **OIDC Trusted Publisher** — no token is stored in GitHub secrets.
 
 ---
 
