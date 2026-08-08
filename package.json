@@ -1,6 +1,6 @@
 {
   "name": "amarwave-js",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Real-time WebSocket client for AmarWave — subscribe to channels, bind events, publish messages.",
   "author": "AmarWave <mehedinaeem66@email.com>",
   "main": "dist/amarwave.cjs",

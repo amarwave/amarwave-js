@@ -411,8 +411,10 @@ class AmarWave extends EventEmitter {
     /** @internal Called by Channel.publish() and aw.publish(). */
     async _httpPublish(channelName, event, data) {
         const c = this._cfg;
-        const proto = c.forceTLS ? 'https' : 'http';
-        const defaultPort = c.forceTLS ? 443 : 80;
+        // Port 443 implies HTTPS regardless of forceTLS (cloud cluster resolves to 443)
+        const useTLS = c.forceTLS || c.apiPort === 443;
+        const proto = useTLS ? 'https' : 'http';
+        const defaultPort = useTLS ? 443 : 80;
         const portStr = c.apiPort === defaultPort ? '' : `:${c.apiPort}`;
         const url = `${proto}://${c.apiHost}${portStr}${c.apiPath}`;
         try {
