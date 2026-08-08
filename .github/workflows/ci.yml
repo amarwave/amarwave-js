@@ -3,8 +3,6 @@ name: CI
 on:
   push:
     branches: [main, develop]
-    tags:
-      - 'v*'
   pull_request:
     branches: [main]
 
@@ -32,7 +30,7 @@ jobs:
     name: Publish to npm
     runs-on: ubuntu-latest
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref == 'refs/heads/main'
     permissions:
       id-token: write
     steps:
@@ -43,8 +41,27 @@ jobs:
           node-version: "20"
           registry-url: "https://registry.npmjs.org"
 
-      - run: npm install
-      - run: node ./node_modules/typescript/bin/tsc --project tsconfig.build.json || true
-      - run: node ./node_modules/rollup/dist/bin/rollup -c rollup.config.js
-      - run: node ./node_modules/terser/bin/terser dist/amarwave.umd.js -o dist/amarwave.min.js --compress --mangle --source-map
-      - run: npm publish --provenance --access public
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check if version is already published
+        id: check
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          PUBLISHED=$(npm view amarwave-js@${PKG_VERSION} version 2>/dev/null || echo "")
+          if [ "$PUBLISHED" = "$PKG_VERSION" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          node ./node_modules/typescript/bin/tsc --project tsconfig.build.json || true
+          node ./node_modules/rollup/dist/bin/rollup -c rollup.config.js
+          node ./node_modules/terser/bin/terser dist/amarwave.umd.js -o dist/amarwave.min.js --compress --mangle --source-map
+
+      - name: Publish
+        if: steps.check.outputs.skip == 'false'
+        run: npm publish --provenance --access public
