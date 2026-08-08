@@ -42,8 +42,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - run: npm install
-      - run: find node_modules/.bin -type l -exec chmod +x {} \; || true
-      - run: npm run build
+      - run: npx tsc --project tsconfig.build.json || true
+      - run: npx rollup -c rollup.config.js
+      - run: npx terser dist/amarwave.umd.js -o dist/amarwave.min.js --compress --mangle --source-map
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
